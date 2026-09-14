@@ -1,0 +1,46 @@
+dataset:
+  text:
+    label_column_name: sentiment
+    text_column_name: text
+    bbox_model: word
+    font_height: 34
+    wrap_fraction: 0.90
+    path: examples/smoke_text/data/demo_text.csv
+
+display:
+  monitor:
+    name: native_smoke_monitor
+    resolution: [1920, 1080]
+    width: 53
+    distance: 60
+    display_number: 0
+  gui:
+    button:
+      size: [250, 100]
+      margin: 20
+      color: lightgrey
+      text:
+        color: black
+        size: 30
+    fixation_dot:
+      size: 10
+      color: white
+    aoe: [1000, 650]
+
+output:
+  folder: output
+
+instructions:
+  intro:
+    - "Tobii Pytracker - native text smoke demo"
+    - ""
+    - "Read the text and choose the matching sentiment with LEFT CLICK."
+    - "If MouseGaze is enabled, hold the RIGHT mouse button while moving the pointer to simulate gaze."
+    - "Release RIGHT before LEFT CLICK to choose the response."
+    - ""
+    - "Click the window and press SPACE to start."
+  outro:
+    - "Smoke demo finished."
+    - ""
+    - "Results were saved under ./output/<timestamp>/data.csv."
+    - "Press ESC to close the demo."

@@ -1,0 +1,46 @@
+dataset:
+  image:
+    bbox_model: grid
+    path: examples/smoke_images/data
+
+display:
+  monitor:
+    name: image_smoke_monitor
+    resolution:
+      - 1920
+      - 1080
+    width: 35
+    distance: 60
+    display_number: 0
+  gui:
+    button:
+      size:
+        - 250
+        - 100
+      margin: 20
+      color: lightgrey
+      text:
+        color: black
+        size: 30
+    fixation_dot:
+      size: 10
+      color: white
+    aoe:
+      - 900
+      - 700
+
+output:
+  folder: output
+
+instructions:
+  intro:
+    - "IMAGE GAZE SMOKE DEMO"
+    - "You will see three photographs: HUMAN, ANIMAL and OBJECT."
+    - "Look naturally at each image and then click the matching category."
+    - "For MouseGaze: hold RIGHT mouse button while moving the pointer to generate gaze samples."
+    - "Release RIGHT before LEFT CLICK because LEFT+RIGHT is used as blink by upstream MouseGaze."
+    - "Click the window and press SPACE to begin."
+  outro:
+    - "The three-image smoke experiment is complete."
+    - "The output has been saved."
+    - "Press ESC to exit."

@@ -45,6 +45,15 @@ def main() -> int:
         upstream_root = workspace_root / "tobii-pytracker"
     smoke_config = demo_root / "examples" / "smoke_text" / "config.native.yaml"
     smoke_data = demo_root / "examples" / "smoke_text" / "data" / "demo_text.csv"
+    image_runner = demo_root / "examples" / "smoke_images" / "run_native.sh"
+    ux_runner = demo_root / "examples" / "tobii_ux_ab_demo" / "run_native.sh"
+    timeseries_runner = demo_root / "examples" / "tobii_timeseries_noise_demo" / "run_native.sh"
+    timeseries_validator = demo_root / "examples" / "tobii_timeseries_noise_demo" / "validate_collection.py"
+    timeseries_machine = demo_root / "examples" / "tobii_timeseries_noise_demo" / "data" / "machine_vibration.csv"
+    timeseries_pv = demo_root / "examples" / "tobii_timeseries_noise_demo" / "data" / "pv_power.csv"
+    text_search_runner = demo_root / "examples" / "tobii_text_search_demo" / "run_native.sh"
+    text_search_validator = demo_root / "examples" / "tobii_text_search_demo" / "validate_collection.py"
+    text_search_dataset = demo_root / "examples" / "tobii_text_search_demo" / "data" / "text_search.csv"
 
     failures: list[str] = []
     notes: list[str] = []
@@ -53,7 +62,30 @@ def main() -> int:
         failures.append(f"Python must be 3.10.x, got {sys.version.split()[0]}")
 
     if not upstream_root.is_dir():
-        failures.append(f"Missing sibling original upstream clone: {upstream_root}")
+        failures.append(f"Missing parent original upstream clone: {upstream_root}")
+    elif upstream_root.parent.name == "tobii-pytracker" and (upstream_root.parent / ".git").exists():
+        failures.append(
+            "Nested duplicate upstream clone detected: expected <workspace>/tobii-pytracker/"
+            "tobii-pytracker-demo, not .../tobii-pytracker/tobii-pytracker/..."
+        )
+    if not image_runner.is_file():
+        failures.append(f"Missing image smoke runner: {image_runner}")
+    if not ux_runner.is_file():
+        failures.append(f"Missing UX A/B runner: {ux_runner}")
+    if not timeseries_runner.is_file():
+        failures.append(f"Missing time-series runner: {timeseries_runner}")
+    if not timeseries_validator.is_file():
+        failures.append(f"Missing time-series collection validator: {timeseries_validator}")
+    if not timeseries_machine.is_file():
+        failures.append(f"Missing machine time-series dataset: {timeseries_machine}")
+    if not timeseries_pv.is_file():
+        failures.append(f"Missing PV time-series dataset: {timeseries_pv}")
+    if not text_search_runner.is_file():
+        failures.append(f"Missing text-search runner: {text_search_runner}")
+    if not text_search_validator.is_file():
+        failures.append(f"Missing text-search collection validator: {text_search_validator}")
+    if not text_search_dataset.is_file():
+        failures.append(f"Missing text-search dataset: {text_search_dataset}")
     if not smoke_config.is_file():
         failures.append(f"Missing smoke config: {smoke_config}")
     if not smoke_data.is_file():
@@ -97,7 +129,7 @@ def main() -> int:
             if normalize_url(str(demo_root)) in normalized_source:
                 failures.append("Installed tobii-pytracker points to the demo repository")
             if normalize_url(str(upstream_root)) not in normalized_source:
-                notes.append(f"Installed package direct_url does not point to sibling upstream clone: {source_url}")
+                notes.append(f"Installed package direct_url does not point to parent upstream clone: {source_url}")
         else:
             notes.append("Installed distribution has no direct_url.json; source provenance cannot be proven from wheel metadata")
     except metadata.PackageNotFoundError:
@@ -114,6 +146,15 @@ def main() -> int:
     except Exception as exc:
         failures.append(f"Cannot import tobii_pytracker: {exc}")
         module_path = Path("<unavailable>")
+
+    try:
+        psychopy_version = metadata.version("psychopy")
+    except metadata.PackageNotFoundError:
+        psychopy_version = "<not installed>"
+    try:
+        setuptools_version = metadata.version("setuptools")
+    except metadata.PackageNotFoundError:
+        setuptools_version = "<not installed>"
 
     psychopy_gui_status = "OK"
     try:
@@ -146,10 +187,14 @@ def main() -> int:
     print(f"upstream_origin={upstream_origin}")
     print(f"upstream_commit={upstream_sha}")
     print(f"distribution_version={dist_version}")
+    print(f"psychopy_version={psychopy_version}")
+    print(f"setuptools_version={setuptools_version}")
     print(f"module_path={module_path}")
     print(f"cli_path={cli_path or '<missing>'}")
     print(f"psychopy_gui={psychopy_gui_status}")
     print(f"psychopy_iohub={psychopy_iohub_status}")
+    if psychopy_version != "2024.1.4":
+        print(f"NOTE: current native candidate is PsychoPy 2024.1.4; installed={psychopy_version}")
     for note in notes:
         print(f"NOTE: {note}")
     if failures:

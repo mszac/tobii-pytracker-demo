@@ -4,6 +4,12 @@ Migrated native example for `https://github.com/mszac/tobii-pytracker-demo`.
 
 The legacy source contract in `__previous-examples/1 tobii_ux_ab_demo/README.md` described a 12-trial text-search task with EARLY/LATE information placement and later analysis of accuracy, target fixation, TTFF and dwell time. This version aligns that workflow with the already working native `smoke_images` architecture. The demo repository is cloned inside a clean upstream `tobii-pytracker` clone, and the user's terminal remains at the **parent upstream root**. The launcher internally switches to the demo root so its relative config/data/output paths preserve the validated behavior.
 
+Before running, verify from `tobii-pytracker` that the launcher exists:
+
+```bash
+test -f tobii-pytracker-demo/examples/tobii_ux_ab_demo/run_native.sh && echo "RUNNER_OK"
+```
+
 ## Run
 
 From the original `tobii-pytracker` root, after the common native preflight:

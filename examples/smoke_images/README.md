@@ -4,6 +4,12 @@ Purpose: a minimal end-to-end validation of image presentation, upstream MouseGa
 
 The three stimuli represent three deliberately broad semantic categories: **human**, **animal** and **object**. The scientific interpretation is intentionally modest: the demo can illustrate differences in spatial exploration across semantically different images, but three stimuli from one participant are only a pipeline smoke test, not an inferential study.
 
+Before running, verify from `tobii-pytracker` that the launcher exists:
+
+```bash
+test -f tobii-pytracker-demo/examples/smoke_images/run_native.sh && echo "RUNNER_OK"
+```
+
 ## Collection
 
 Keep the terminal in the original parent `tobii-pytracker` root and invoke the nested demo launcher:
