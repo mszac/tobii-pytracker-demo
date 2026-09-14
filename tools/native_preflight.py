@@ -10,7 +10,7 @@ import sys
 from urllib.parse import unquote
 
 EXPECTED_UPSTREAM_URL_FRAGMENT = "sbobek/tobii-pytracker"
-EXPECTED_EXAMPLES_URL_FRAGMENT = "mszac/tobii-pytracker-examples"
+EXPECTED_DEMO_URL_FRAGMENT = "mszac/tobii-pytracker-demo"
 
 
 def run_git(repo: Path, *args: str) -> str:
@@ -33,18 +33,18 @@ def main() -> int:
     parser.add_argument("--require-iohub", action="store_true", help="Fail when PsychoPy ioHub cannot be imported (use before N4-A).")
     args = parser.parse_args()
 
-    examples_root = Path(__file__).resolve().parents[1]
-    # Supported test layout: examples repo cloned inside the original upstream repo.
+    demo_root = Path(__file__).resolve().parents[1]
+    # Supported test layout: demo repo cloned inside the original upstream repo.
     # Legacy sibling layout is still accepted for convenience.
-    parent = examples_root.parent
+    parent = demo_root.parent
     if parent.name == "tobii-pytracker" and (parent / "pyproject.toml").is_file():
         upstream_root = parent
         workspace_root = parent.parent
     else:
         workspace_root = parent
         upstream_root = workspace_root / "tobii-pytracker"
-    smoke_config = examples_root / "examples" / "smoke_text" / "config.native.yaml"
-    smoke_data = examples_root / "examples" / "smoke_text" / "data" / "demo_text.csv"
+    smoke_config = demo_root / "examples" / "smoke_text" / "config.native.yaml"
+    smoke_data = demo_root / "examples" / "smoke_text" / "data" / "demo_text.csv"
 
     failures: list[str] = []
     notes: list[str] = []
@@ -60,14 +60,14 @@ def main() -> int:
         failures.append(f"Missing smoke dataset: {smoke_data}")
 
     try:
-        examples_origin = run_git(examples_root, "remote", "get-url", "origin")
-        examples_sha = run_git(examples_root, "rev-parse", "HEAD")
-        if EXPECTED_EXAMPLES_URL_FRAGMENT not in normalize_url(examples_origin):
-            notes.append(f"Examples origin differs from expected public repo: {examples_origin}")
+        demo_origin = run_git(demo_root, "remote", "get-url", "origin")
+        demo_sha = run_git(demo_root, "rev-parse", "HEAD")
+        if EXPECTED_DEMO_URL_FRAGMENT not in normalize_url(demo_origin):
+            notes.append(f"Demo origin differs from expected public repo: {demo_origin}")
     except Exception as exc:
-        failures.append(f"Cannot read examples Git provenance: {exc}")
-        examples_origin = "<unavailable>"
-        examples_sha = "<unavailable>"
+        failures.append(f"Cannot read demo Git provenance: {exc}")
+        demo_origin = "<unavailable>"
+        demo_sha = "<unavailable>"
 
     if upstream_root.is_dir():
         try:
@@ -94,8 +94,8 @@ def main() -> int:
         if direct_url:
             source_url = str(direct_url.get("url", ""))
             normalized_source = normalize_url(unquote(source_url))
-            if normalize_url(str(examples_root)) in normalized_source:
-                failures.append("Installed tobii-pytracker points to the examples repository")
+            if normalize_url(str(demo_root)) in normalized_source:
+                failures.append("Installed tobii-pytracker points to the demo repository")
             if normalize_url(str(upstream_root)) not in normalized_source:
                 notes.append(f"Installed package direct_url does not point to sibling upstream clone: {source_url}")
         else:
@@ -109,8 +109,8 @@ def main() -> int:
         import tobii_pytracker  # type: ignore
 
         module_path = Path(tobii_pytracker.__file__).resolve()
-        if examples_root in module_path.parents:
-            failures.append(f"tobii_pytracker imported from examples repository: {module_path}")
+        if demo_root in module_path.parents:
+            failures.append(f"tobii_pytracker imported from demo repository: {module_path}")
     except Exception as exc:
         failures.append(f"Cannot import tobii_pytracker: {exc}")
         module_path = Path("<unavailable>")
@@ -139,9 +139,9 @@ def main() -> int:
 
     print("NATIVE_PREFLIGHT")
     print(f"python={sys.version.split()[0]}")
-    print(f"examples_root={examples_root}")
-    print(f"examples_origin={examples_origin}")
-    print(f"examples_commit={examples_sha}")
+    print(f"demo_root={demo_root}")
+    print(f"demo_origin={demo_origin}")
+    print(f"demo_commit={demo_sha}")
     print(f"upstream_root={upstream_root}")
     print(f"upstream_origin={upstream_origin}")
     print(f"upstream_commit={upstream_sha}")

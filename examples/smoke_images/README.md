@@ -6,7 +6,7 @@ The three stimuli represent three deliberately broad semantic categories: **huma
 
 ## Collection
 
-Run from the root of `tobii-pytracker-examples`, which is cloned inside the original `tobii-pytracker` directory:
+Run from the root of `tobii-pytracker-demo`, which is cloned inside the original `tobii-pytracker` directory:
 
 ```bash
 bash examples/smoke_images/run_native.sh

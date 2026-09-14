@@ -6,15 +6,15 @@ This bundle is owned by the examples layer. It does not modify or vendor `src/to
 
 ## Reference directory layout
 
-Clone the original package and the examples repository as siblings:
+Clone the original package, then clone the demo repository inside it:
 
 ```text
 workspace/
 ├── tobii-pytracker/          # original sbobek runtime authority
-└── tobii-pytracker-examples/ # examples/config/data/analysis authority
+└── tobii-pytracker-demo/ # demo config/data/analysis authority
 ```
 
-Install `tobii-pytracker` only from the original clone. Run the commands below from the **examples repository root**.
+Install `tobii-pytracker` only from the original clone. Run the commands below from the **demo repository root**.
 
 ## N3-A — collection without eyetracker
 

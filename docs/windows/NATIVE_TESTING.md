@@ -1,6 +1,6 @@
 # Windows native testing
 
-Primary target: Windows 11, original upstream runtime, examples repository cloned **inside** the upstream clone. Docker/WSL are not used here. Git Bash commands are shown first; equivalent PowerShell commands are also provided.
+Primary target: Windows 11, original upstream runtime, demo repository cloned **inside** the upstream clone. Docker/WSL are not used here. Git Bash commands are shown first; equivalent PowerShell commands are also provided.
 
 ## 1. Fresh clones
 
@@ -11,8 +11,8 @@ cd /c/work/pytracker-test
 rm -rf tobii-pytracker
 git clone https://github.com/sbobek/tobii-pytracker.git
 cd tobii-pytracker
-git clone -b psychopy https://github.com/mszac/tobii-pytracker-examples.git
-cd tobii-pytracker-examples
+git clone https://github.com/mszac/tobii-pytracker-demo.git
+cd tobii-pytracker-demo
 ```
 
 ### PowerShell
@@ -22,8 +22,8 @@ Set-Location C:\work\pytracker-test
 if (Test-Path .\tobii-pytracker) { Remove-Item .\tobii-pytracker -Recurse -Force }
 git clone https://github.com/sbobek/tobii-pytracker.git
 Set-Location .\tobii-pytracker
-git clone -b psychopy https://github.com/mszac/tobii-pytracker-examples.git
-Set-Location .\tobii-pytracker-examples
+git clone https://github.com/mszac/tobii-pytracker-demo.git
+Set-Location .\tobii-pytracker-demo
 ```
 
 Record provenance:
@@ -66,7 +66,7 @@ conda run -n pytracker-env python -m pip install "psychopy>=2024.1.4,<2025.1.0" 
 conda run -n pytracker-env python -m pip install "pyzmq>=22.2.1" ujson
 ```
 
-Do not run `pip install .` from `tobii-pytracker-examples`.
+Do not run `pip install .` from `tobii-pytracker-demo`; install only the parent original upstream clone.
 
 ## 3. Provenance preflight
 
@@ -137,3 +137,38 @@ git -C .. status --porcelain
 ```
 
 It must remain empty.
+
+
+## 7. UX A/B text-search demo
+
+After the image smoke has proven the environment, run the migrated 12-trial legacy demo:
+
+### Git Bash
+```bash
+conda run --no-capture-output -n pytracker-env bash examples/tobii_ux_ab_demo/run_native.sh
+```
+
+### PowerShell
+```powershell
+conda run --no-capture-output -n pytracker-env tobii-pytracker `
+  --config_file examples\tobii_ux_ab_demo\config.native.yaml `
+  --eyetracker_config_file ..\configs\mouse_eyetracker_config.yaml `
+  --enable_eyetracker `
+  --loop_count 12
+```
+
+Hold RIGHT while moving to generate gaze, release RIGHT, then LEFT CLICK TAK or NIE. Do not select the upstream-added NONE button.
+
+Analyze completed UX sessions:
+
+### Git Bash
+```bash
+conda run --no-capture-output -n pytracker-env python examples/tobii_ux_ab_demo/analysis/analyze_results.py
+```
+
+### PowerShell
+```powershell
+conda run --no-capture-output -n pytracker-env python examples\tobii_ux_ab_demo\analysis\analyze_results.py
+```
+
+Expected marker: `NATIVE_UX_AB_ANALYSIS_PASS`. Generated reports are under `examples/tobii_ux_ab_demo/results/`.
