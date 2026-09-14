@@ -6,11 +6,13 @@ The three stimuli represent three deliberately broad semantic categories: **huma
 
 ## Collection
 
-Run from the root of `tobii-pytracker-demo`, which is cloned inside the original `tobii-pytracker` directory:
+Keep the terminal in the original parent `tobii-pytracker` root and invoke the nested demo launcher:
 
 ```bash
-bash examples/smoke_images/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/smoke_images/run_native.sh
 ```
+
+The launcher internally establishes the `tobii-pytracker-demo` working directory because the config uses demo-root-relative paths.
 
 MouseGaze uses the **original upstream controls**:
 
@@ -24,10 +26,10 @@ The run is forced to exactly three trials. Generate at least some gaze on every 
 
 ## Analysis
 
-After the experiment exits:
+After the experiment exits, still from `tobii-pytracker`:
 
 ```bash
-python examples/smoke_images/analysis/analyze_output.py --output-root output
+conda run --no-capture-output -n pytracker-env python tobii-pytracker-demo/examples/smoke_images/analysis/analyze_output.py --output-root tobii-pytracker-demo/output
 ```
 
 The analysis requires exactly three trials and gaze data on all three. It uses the public pytracker analyzers for heatmap statistics, fixation detection, saccade detection and spatial entropy. Lack of detected fixations or saccades is allowed; lack of gaze on any trial is a smoke-test failure.

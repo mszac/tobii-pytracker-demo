@@ -6,13 +6,15 @@ This repository contains example-owned configs, datasets, launchers and analysis
 
 Development logs, validation reports and historical patches are distributed in a **separate project-logs ZIP** and are not committed to this demo repository.
 
-Primary current target: native Windows 11. Docker/WSL are not used for this path.
+Primary current target: native Windows 11. Docker/WSL are not used for this path. The operator clones this repository inside `tobii-pytracker`, then keeps the terminal in the **parent `tobii-pytracker` root** and invokes demo/preflight paths as `tobii-pytracker-demo/...`. Launchers internally establish the demo-root working directory when required by relative config/data/output paths.
 
-- Windows procedure: `docs/windows/NATIVE_TESTING.md`
-- Linux procedure: `docs/linux/NATIVE_TESTING.md` (planned; not physically certified yet)
-- Provenance/import gate: `tools/native_preflight.py`
-- Working reference smoke: `examples/smoke_images/`
-- Migrated legacy demo: `examples/tobii_ux_ab_demo/`
+Current environment candidate for the next physical test: Python 3.10 + `PsychoPy==2024.1.4` + upstream package installed from `tobii-pytracker`.
+
+- Windows procedure: `tobii-pytracker-demo/docs/windows/NATIVE_TESTING.md`
+- Linux procedure: `tobii-pytracker-demo/docs/linux/NATIVE_TESTING.md` (planned; not physically certified yet)
+- Provenance/import gate: `tobii-pytracker-demo/tools/native_preflight.py`
+- Working reference smoke: `tobii-pytracker-demo/examples/smoke_images/`
+- Migrated legacy demo: `tobii-pytracker-demo/examples/tobii_ux_ab_demo/`
 
 ## Current native examples
 

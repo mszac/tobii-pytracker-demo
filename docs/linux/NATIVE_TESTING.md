@@ -1,6 +1,6 @@
 # Linux native testing
 
-Linux/WSL physical validation is deferred. Bash-only reference layout:
+Linux/WSL physical validation is deferred. Bash-only reference layout. After cloning, keep the shell in the original `tobii-pytracker` root:
 
 ```bash
 mkdir -p ~/pytracker-test
@@ -9,7 +9,6 @@ rm -rf tobii-pytracker
 git clone https://github.com/sbobek/tobii-pytracker.git
 cd tobii-pytracker
 git clone https://github.com/mszac/tobii-pytracker-demo.git
-cd tobii-pytracker-demo
 ```
 
-Reference invariants: Python 3.10; install package only from parent original clone (`pip install ..`); never install the demo repo; run examples from the demo-repository root; upstream MouseGaze config is `../configs/mouse_eyetracker_config.yaml`. Linux/WSL dependency details will be finalized after Windows native validation.
+Reference invariants: Python 3.10; install the package only from the current original clone (`pip install .`); never install the demo repo; invoke demo scripts through `tobii-pytracker-demo/...`; launchers may internally switch to the demo root because config/data/output paths are demo-root-relative. Linux/WSL dependency closure remains pending physical validation.
