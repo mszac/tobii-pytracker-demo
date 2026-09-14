@@ -1,0 +1,53 @@
+dataset:
+  text:
+    label_column_name: answer
+    text_column_name: selected_text
+    color: white
+    background_color: black
+    bbox_model: word
+    path: datasets/ux_ab_demo.csv
+
+display:
+  monitor:
+    name: spectrum_monitor
+    resolution:
+      - 2560
+      - 1440
+    width: 35
+    distance: 60
+    display_number: 0
+  gui:
+    button:
+      size:
+        - 250
+        - 100
+      margin: 20
+      color: lightgrey
+      text:
+        color: black
+        size: 30
+    fixation_dot:
+      size: 10
+      color: white
+    aoe:
+      - 750
+      - 750
+
+output:
+  folder: output/ux_ab_demo
+
+instructions:
+  intro:
+    - "Por\u00f3wnanie komunikat\u00f3w UX"
+    - ""
+    - "Przeczytaj komunikat oraz pytanie."
+    - "Nast\u0119pnie wybierz odpowied\u017a TAK albo NIE."
+    - "Czytaj w naturalnym tempie."
+    - ""
+    - "Kliknij okno i naci\u015bnij SPACE, aby rozpocz\u0105\u0107."
+  outro:
+    - "Koniec eksperymentu."
+    - ""
+    - "Dzi\u0119kujemy za udzia\u0142."
+    - "Wyniki zosta\u0142y zapisane."
+    - "Naci\u015bnij ESC, aby zako\u0144czy\u0107."

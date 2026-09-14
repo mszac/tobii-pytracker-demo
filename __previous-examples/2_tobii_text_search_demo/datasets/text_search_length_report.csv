@@ -1,0 +1,13 @@
+item_id,topic,condition,answer,text_word_count
+1,zwrot,EARLY,TAK,19
+2,dostawa,LATE,NIE,17
+3,reklamacja,EARLY,NIE,18
+4,konto,LATE,TAK,19
+5,zwrot_srodkow,EARLY,TAK,19
+6,rezerwacja,LATE,NIE,16
+7,subskrypcja,EARLY,NIE,19
+8,gwarancja,LATE,TAK,19
+9,haslo,EARLY,TAK,20
+10,faktura,LATE,NIE,21
+11,odbior,EARLY,NIE,21
+12,dane,LATE,TAK,19

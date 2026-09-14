@@ -1,0 +1,37 @@
+item_id,topic,condition,answer,critical_phrase,question,text_body,text_word_count,selected_text
+1,zwrot,EARLY,TAK,Zwrot jest możliwy przez trzydzieści dni od zakupu,Czy produkt można zwrócić w ciągu trzydziestu dni?,Zwrot jest możliwy przez trzydzieści dni od zakupu. Towar należy odesłać w oryginalnym opakowaniu. Koszt przesyłki zwrotnej ponosi klient.,19,"PYTANIE: Czy produkt można zwrócić w ciągu trzydziestu dni?
+
+TEKST: Zwrot jest możliwy przez trzydzieści dni od zakupu. Towar należy odesłać w oryginalnym opakowaniu. Koszt przesyłki zwrotnej ponosi klient."
+2,dostawa,LATE,NIE,Darmowa dostawa obowiązuje od trzystu złotych,Czy darmowa dostawa obowiązuje od dwustu złotych?,Zamówienia wysyłamy w dni robocze. Klient może wybrać kuriera albo paczkomat. Darmowa dostawa obowiązuje od trzystu złotych.,17,"PYTANIE: Czy darmowa dostawa obowiązuje od dwustu złotych?
+
+TEKST: Zamówienia wysyłamy w dni robocze. Klient może wybrać kuriera albo paczkomat. Darmowa dostawa obowiązuje od trzystu złotych."
+3,reklamacja,EARLY,NIE,Reklamację można zgłosić wyłącznie telefonicznie,Czy reklamację można zgłosić przez formularz internetowy?,Reklamację można zgłosić wyłącznie telefonicznie. Przy zgłoszeniu należy podać numer zamówienia. Odpowiedź zostanie przekazana w ciągu czternastu dni.,18,"PYTANIE: Czy reklamację można zgłosić przez formularz internetowy?
+
+TEKST: Reklamację można zgłosić wyłącznie telefonicznie. Przy zgłoszeniu należy podać numer zamówienia. Odpowiedź zostanie przekazana w ciągu czternastu dni."
+4,konto,LATE,TAK,Konto można usunąć samodzielnie w ustawieniach profilu,Czy konto można usunąć samodzielnie w ustawieniach?,Adres e-mail można zmienić po zalogowaniu. Historia zamówień jest dostępna na profilu. Konto można usunąć samodzielnie w ustawieniach profilu.,19,"PYTANIE: Czy konto można usunąć samodzielnie w ustawieniach?
+
+TEKST: Adres e-mail można zmienić po zalogowaniu. Historia zamówień jest dostępna na profilu. Konto można usunąć samodzielnie w ustawieniach profilu."
+5,zwrot_srodkow,EARLY,TAK,Środki są zwracane w ciągu siedmiu dni roboczych,Czy pieniądze są zwracane w ciągu siedmiu dni roboczych?,Środki są zwracane w ciągu siedmiu dni roboczych. Zwrot trafia na pierwotnie użyty rachunek. Klient otrzymuje potwierdzenie pocztą elektroniczną.,19,"PYTANIE: Czy pieniądze są zwracane w ciągu siedmiu dni roboczych?
+
+TEKST: Środki są zwracane w ciągu siedmiu dni roboczych. Zwrot trafia na pierwotnie użyty rachunek. Klient otrzymuje potwierdzenie pocztą elektroniczną."
+6,rezerwacja,LATE,NIE,Anulowanie rezerwacji kosztuje dwadzieścia złotych,Czy rezerwację można anulować bez dodatkowej opłaty?,Termin można zmienić jeden raz. Zmiana wymaga wcześniejszego kontaktu z obsługą. Anulowanie rezerwacji kosztuje dwadzieścia złotych.,16,"PYTANIE: Czy rezerwację można anulować bez dodatkowej opłaty?
+
+TEKST: Termin można zmienić jeden raz. Zmiana wymaga wcześniejszego kontaktu z obsługą. Anulowanie rezerwacji kosztuje dwadzieścia złotych."
+7,subskrypcja,EARLY,NIE,Subskrypcję można zakończyć dopiero po trzech miesiącach,Czy subskrypcję można zakończyć w dowolnym momencie?,Subskrypcję można zakończyć dopiero po trzech miesiącach. Opłata jest pobierana na początku miesiąca. Plan można zmienić w ustawieniach konta.,19,"PYTANIE: Czy subskrypcję można zakończyć w dowolnym momencie?
+
+TEKST: Subskrypcję można zakończyć dopiero po trzech miesiącach. Opłata jest pobierana na początku miesiąca. Plan można zmienić w ustawieniach konta."
+8,gwarancja,LATE,TAK,Gwarancja obowiązuje przez dwadzieścia cztery miesiące,Czy gwarancja obowiązuje przez dwadzieścia cztery miesiące?,Dowód zakupu należy zachować przez cały okres. Naprawę można zgłosić w punkcie serwisowym. Gwarancja obowiązuje przez dwadzieścia cztery miesiące.,19,"PYTANIE: Czy gwarancja obowiązuje przez dwadzieścia cztery miesiące?
+
+TEKST: Dowód zakupu należy zachować przez cały okres. Naprawę można zgłosić w punkcie serwisowym. Gwarancja obowiązuje przez dwadzieścia cztery miesiące."
+9,haslo,EARLY,TAK,Link do zmiany hasła jest wysyłany pocztą elektroniczną,Czy link do zmiany hasła jest wysyłany e-mailem?,Link do zmiany hasła jest wysyłany pocztą elektroniczną. Link pozostaje aktywny przez trzydzieści minut. Po zmianie należy zalogować się ponownie.,20,"PYTANIE: Czy link do zmiany hasła jest wysyłany e-mailem?
+
+TEKST: Link do zmiany hasła jest wysyłany pocztą elektroniczną. Link pozostaje aktywny przez trzydzieści minut. Po zmianie należy zalogować się ponownie."
+10,faktura,LATE,NIE,Danych na fakturze nie można zmienić po jej wystawieniu,Czy dane na fakturze można zmienić po jej wystawieniu?,Faktura jest dostępna na koncie klienta. Dokument można pobrać w formacie PDF. Danych na fakturze nie można zmienić po jej wystawieniu.,21,"PYTANIE: Czy dane na fakturze można zmienić po jej wystawieniu?
+
+TEKST: Faktura jest dostępna na koncie klienta. Dokument można pobrać w formacie PDF. Danych na fakturze nie można zmienić po jej wystawieniu."
+11,odbior,EARLY,NIE,Odbiór osobisty jest dostępny tylko od poniedziałku do piątku,Czy odbiór osobisty jest dostępny również w weekend?,Odbiór osobisty jest dostępny tylko od poniedziałku do piątku. Gotowe zamówienie czeka przez trzy dni. Przy odbiorze należy podać numer zamówienia.,21,"PYTANIE: Czy odbiór osobisty jest dostępny również w weekend?
+
+TEKST: Odbiór osobisty jest dostępny tylko od poniedziałku do piątku. Gotowe zamówienie czeka przez trzy dni. Przy odbiorze należy podać numer zamówienia."
+12,dane,LATE,TAK,Kopię danych można pobrać w ustawieniach profilu,Czy kopię swoich danych można pobrać z ustawień profilu?,Adres e-mail można zaktualizować po zalogowaniu. Preferencje powiadomień są dostępne na koncie. Kopię danych można pobrać w ustawieniach profilu.,19,"PYTANIE: Czy kopię swoich danych można pobrać z ustawień profilu?
+
+TEKST: Adres e-mail można zaktualizować po zalogowaniu. Preferencje powiadomień są dostępne na koncie. Kopię danych można pobrać w ustawieniach profilu."
