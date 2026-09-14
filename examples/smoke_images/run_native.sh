@@ -16,6 +16,9 @@ if [[ ! -f "$UPSTREAM_ROOT/configs/mouse_eyetracker_config.yaml" ]]; then
   exit 2
 fi
 
+python "$EXAMPLES_ROOT/tools/validate_response_gated_native.py" \
+  --upstream-root "$UPSTREAM_ROOT"
+
 cd "$EXAMPLES_ROOT"
 exec tobii-pytracker \
   --config_file examples/smoke_images/config.native.yaml \

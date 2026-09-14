@@ -14,6 +14,8 @@ test -f tobii-pytracker-demo/examples/smoke_images/run_native.sh && echo "SMOKE_
 test -f tobii-pytracker-demo/examples/tobii_ux_ab_demo/run_native.sh && echo "UX_AB_RUNNER_OK"
 ```
 
+Response-gated invariant: every active launcher runs `tools/validate_response_gated_native.py`; a stimulus has no response timeout and remains visible until an answer button is clicked. Required pre-launch marker: `NATIVE_RESPONSE_GATE_PASS`.
+
 Reference invariants: Python 3.10; install the package only from the current original clone (`pip install .`); never install the demo repo; invoke demo scripts through `tobii-pytracker-demo/...`; launchers may internally switch to the demo root because config/data/output paths are demo-root-relative. Linux/WSL dependency closure remains pending physical validation.
 
 ### Time-series variability demo

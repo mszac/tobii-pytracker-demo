@@ -37,6 +37,7 @@ instructions:
     - "IMAGE SEMANTIC GAZE DEMO"
     - "You will see 12 images from three categories: BIOLOGICAL, OBJECT and SCENE."
     - "Look naturally at each image, then click the category that best describes it."
+    - "There is no response timer: the current stimulus remains visible until you click an answer."
     - "For MouseGaze: hold RIGHT mouse button while moving the pointer to generate gaze samples."
     - "Release RIGHT before LEFT CLICK because LEFT+RIGHT is used as blink by upstream MouseGaze."
     - "Click the window and press SPACE to begin."

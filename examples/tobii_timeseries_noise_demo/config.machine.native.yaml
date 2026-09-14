@@ -38,6 +38,7 @@ instructions:
     - "TIME-SERIES VARIABILITY DEMO — MACHINE VIBRATION"
     - "Judge how large the irregular vibration fluctuations are."
     - "Choose LOW, MEDIUM or HIGH. NONE means you are unsure."
+    - "There is no response timer: the current stimulus remains visible until you click an answer."
     - "For MouseGaze: hold RIGHT mouse button while moving to generate gaze samples."
     - "Release RIGHT before LEFT CLICK because LEFT+RIGHT is used as blink by upstream MouseGaze."
     - "Click the window and press SPACE to begin."

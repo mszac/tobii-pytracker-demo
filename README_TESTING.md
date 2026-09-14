@@ -26,6 +26,18 @@ Current Windows environment candidate: Python 3.10 + `PsychoPy==2024.1.4` + upst
 - Working reference smoke: `tobii-pytracker-demo/examples/smoke_images/`
 - Migrated legacy demo: `tobii-pytracker-demo/examples/tobii_ux_ab_demo/`
 
+## Response-gated trial contract
+
+All active native demos are answer-gated, not time-gated. The upstream trial loop waits in `while not next_data` and advances only when a PsychoPy response button is clicked. The fixed `focus_time` applies only to the pre-stimulus fixation screen.
+
+Every active launcher runs `tools/validate_response_gated_native.py` before starting PsychoPy. Required marker:
+
+```text
+NATIVE_RESPONSE_GATE_PASS
+```
+
+If the upstream trial loop changes so a timer, bare `break`, or non-response path can end the stimulus, the launcher fails closed before collection. Every demo intro also states that the current stimulus remains visible until an answer is clicked.
+
 ## Active examples
 
 ### Three-image smoke

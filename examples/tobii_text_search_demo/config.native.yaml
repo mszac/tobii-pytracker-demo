@@ -42,6 +42,7 @@ instructions:
     - "Read the question and short information text."
     - "Find the answer-relevant phrase, then choose TAK or NIE."
     - "The upstream TextDataset also adds NONE; in this demo NONE means NIE WIEM."
+    - "There is no response timer: the current stimulus remains visible until you click an answer."
     - "For MouseGaze: hold RIGHT mouse button while moving the pointer to generate gaze samples."
     - "Release RIGHT before LEFT CLICK because LEFT+RIGHT is used as blink by upstream MouseGaze."
     - "Click the window and press SPACE to begin."

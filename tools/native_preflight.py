@@ -54,6 +54,8 @@ def main() -> int:
     text_search_runner = demo_root / "examples" / "tobii_text_search_demo" / "run_native.sh"
     text_search_validator = demo_root / "examples" / "tobii_text_search_demo" / "validate_collection.py"
     text_search_dataset = demo_root / "examples" / "tobii_text_search_demo" / "data" / "text_search.csv"
+    response_gate_validator = demo_root / "tools" / "validate_response_gated_native.py"
+    image_semantic_runner = demo_root / "examples" / "tobii_image_semantic_demo" / "run_native.sh"
 
     failures: list[str] = []
     notes: list[str] = []
@@ -86,6 +88,10 @@ def main() -> int:
         failures.append(f"Missing text-search collection validator: {text_search_validator}")
     if not text_search_dataset.is_file():
         failures.append(f"Missing text-search dataset: {text_search_dataset}")
+    if not image_semantic_runner.is_file():
+        failures.append(f"Missing image-semantic runner: {image_semantic_runner}")
+    if not response_gate_validator.is_file():
+        failures.append(f"Missing native response-gate validator: {response_gate_validator}")
     if not smoke_config.is_file():
         failures.append(f"Missing smoke config: {smoke_config}")
     if not smoke_data.is_file():
@@ -117,6 +123,19 @@ def main() -> int:
     else:
         upstream_origin = "<missing>"
         upstream_sha = "<missing>"
+
+    if response_gate_validator.is_file() and upstream_root.is_dir():
+        response_gate_proc = subprocess.run(
+            [sys.executable, str(response_gate_validator), "--upstream-root", str(upstream_root)],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        response_gate_output = response_gate_proc.stdout.strip()
+        if response_gate_proc.returncode != 0:
+            failures.append(f"Native response-gated trial contract failed: {response_gate_output}")
+    else:
+        response_gate_output = "<not checked>"
 
     try:
         dist = metadata.distribution("tobii-pytracker")
@@ -193,6 +212,7 @@ def main() -> int:
     print(f"cli_path={cli_path or '<missing>'}")
     print(f"psychopy_gui={psychopy_gui_status}")
     print(f"psychopy_iohub={psychopy_iohub_status}")
+    print(f"response_gate={response_gate_output}")
     if psychopy_version != "2024.1.4":
         print(f"NOTE: current native candidate is PsychoPy 2024.1.4; installed={psychopy_version}")
     for note in notes:

@@ -40,6 +40,7 @@ instructions:
     - "UX INFORMATION-PLACEMENT DEMO"
     - "Read each short question and interface-style text, then choose TAK or NIE."
     - "The answer-relevant phrase appears either early or late in the text."
+    - "There is no response timer: the current stimulus remains visible until you click an answer."
     - "For MouseGaze: hold RIGHT mouse button while moving the pointer to generate gaze samples."
     - "Release RIGHT before LEFT CLICK because LEFT+RIGHT is used as blink by upstream MouseGaze."
     - "A third NONE button is added by the current upstream TextDataset; do not use it in this demo."

@@ -16,6 +16,9 @@ if [[ ! -f "$UPSTREAM_ROOT/configs/mouse_eyetracker_config.yaml" ]]; then
   exit 2
 fi
 
+python "$DEMO_ROOT/tools/validate_response_gated_native.py" \
+  --upstream-root "$UPSTREAM_ROOT"
+
 cd "$DEMO_ROOT"
 
 run_block() {

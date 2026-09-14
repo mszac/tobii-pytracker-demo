@@ -112,6 +112,18 @@ conda run --no-capture-output -n pytracker-env python tobii-pytracker-demo\tools
 
 Required result: `N1R_PACKAGE_PROVENANCE_PASS`.
 
+## 3A. Response-gated trial contract
+
+The native demos do not use a stimulus-response timeout. The current stimulus remains on screen until the participant clicks a response button. The fixed upstream fixation interval occurs before the stimulus and is not a response deadline.
+
+`native_preflight.py` and every active demo launcher run the fail-closed response-gate validator. Before PsychoPy starts, expect:
+
+```text
+NATIVE_RESPONSE_GATE_PASS
+```
+
+If this marker is absent or `NATIVE_RESPONSE_GATE_FAIL` appears, do not continue the experiment.
+
 ## 4. Three-image MouseGaze demo
 
 ### Git Bash

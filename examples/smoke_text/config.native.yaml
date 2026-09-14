@@ -35,6 +35,7 @@ instructions:
     - "Tobii Pytracker - native text smoke demo"
     - ""
     - "Read the text and choose the matching sentiment with LEFT CLICK."
+    - "There is no response timer: the current stimulus remains visible until you click an answer."
     - "If MouseGaze is enabled, hold the RIGHT mouse button while moving the pointer to simulate gaze."
     - "Release RIGHT before LEFT CLICK to choose the response."
     - ""
