@@ -1,0 +1,30 @@
+services:
+  app:
+    image: tobii-pytracker-demo:1.8.0
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        UPSTREAM_REPO: https://github.com/sbobek/tobii-pytracker.git
+        UPSTREAM_REF: ${PYTRACKER_UPSTREAM_REF:-main}
+    init: true
+    shm_size: 2gb
+    stdin_open: true
+    tty: true
+    environment:
+      DISPLAY: :99
+      PYTRACKER_DOCKER_DIRECT_MOUSE: "1"
+      PYTRACKER_DOCKER_MOUSE_HZ: "50"
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      QT_X11_NO_MITSHM: "1"
+    ports:
+      - "127.0.0.1:6080:6080"
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - ..:/workspace/tobii-pytracker/tobii-pytracker-demo
+    healthcheck:
+      test: ["CMD-SHELL", "xdpyinfo -display :99 >/dev/null 2>&1 && curl -fsS http://127.0.0.1:6080/vnc.html >/dev/null && curl -fsS http://127.0.0.1:8888/lab >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
