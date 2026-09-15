@@ -27,6 +27,8 @@ run_block() {
   local title="$3"
 
   echo "[timeseries-demo] Starting $title block (9 trials)..."
+  local started_at
+  started_at="$(python -c 'import time; print(time.time())')"
   tobii-pytracker \
     --config_file "$config" \
     --eyetracker_config_file ../configs/mouse_eyetracker_config.yaml \
@@ -35,7 +37,8 @@ run_block() {
 
   python examples/tobii_timeseries_noise_demo/validate_collection.py \
     --domain "$domain" \
-    --output-root output/tobii_timeseries_noise_demo
+    --output-root output/tobii_timeseries_noise_demo \
+    --started-at "$started_at"
 }
 
 run_block machine examples/tobii_timeseries_noise_demo/config.machine.native.yaml "MACHINE VIBRATION"

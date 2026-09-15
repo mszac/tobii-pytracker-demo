@@ -45,8 +45,10 @@ def main() -> int:
         upstream_root = workspace_root / "tobii-pytracker"
     smoke_config = demo_root / "examples" / "smoke_text" / "config.native.yaml"
     smoke_data = demo_root / "examples" / "smoke_text" / "data" / "demo_text.csv"
-    image_runner = demo_root / "examples" / "smoke_images" / "run_native.sh"
+    image_runner = demo_root / "examples" / "test_demo" / "run_native.sh"
+    image_validator = demo_root / "examples" / "test_demo" / "validate_collection.py"
     ux_runner = demo_root / "examples" / "tobii_ux_ab_demo" / "run_native.sh"
+    ux_validator = demo_root / "examples" / "tobii_ux_ab_demo" / "validate_collection.py"
     timeseries_runner = demo_root / "examples" / "tobii_timeseries_noise_demo" / "run_native.sh"
     timeseries_validator = demo_root / "examples" / "tobii_timeseries_noise_demo" / "validate_collection.py"
     timeseries_machine = demo_root / "examples" / "tobii_timeseries_noise_demo" / "data" / "machine_vibration.csv"
@@ -56,6 +58,13 @@ def main() -> int:
     text_search_dataset = demo_root / "examples" / "tobii_text_search_demo" / "data" / "text_search.csv"
     response_gate_validator = demo_root / "tools" / "validate_response_gated_native.py"
     image_semantic_runner = demo_root / "examples" / "tobii_image_semantic_demo" / "run_native.sh"
+    notebook_paths = [
+        demo_root / "examples" / "test_demo" / "analysis" / "test_demo_analysis.ipynb",
+        demo_root / "examples" / "tobii_ux_ab_demo" / "analysis" / "ux_ab_analysis.ipynb",
+        demo_root / "examples" / "tobii_timeseries_noise_demo" / "analysis" / "timeseries_analysis.ipynb",
+        demo_root / "examples" / "tobii_text_search_demo" / "analysis" / "text_search_analysis.ipynb",
+        demo_root / "examples" / "tobii_image_semantic_demo" / "analysis" / "image_semantic_analysis.ipynb",
+    ]
 
     failures: list[str] = []
     notes: list[str] = []
@@ -71,9 +80,13 @@ def main() -> int:
             "tobii-pytracker-demo, not .../tobii-pytracker/tobii-pytracker/..."
         )
     if not image_runner.is_file():
-        failures.append(f"Missing image smoke runner: {image_runner}")
+        failures.append(f"Missing three-image TEST DEMO runner: {image_runner}")
+    if not image_validator.is_file():
+        failures.append(f"Missing three-image TEST DEMO collection validator: {image_validator}")
     if not ux_runner.is_file():
         failures.append(f"Missing UX A/B runner: {ux_runner}")
+    if not ux_validator.is_file():
+        failures.append(f"Missing UX A/B collection validator: {ux_validator}")
     if not timeseries_runner.is_file():
         failures.append(f"Missing time-series runner: {timeseries_runner}")
     if not timeseries_validator.is_file():
@@ -90,6 +103,9 @@ def main() -> int:
         failures.append(f"Missing text-search dataset: {text_search_dataset}")
     if not image_semantic_runner.is_file():
         failures.append(f"Missing image-semantic runner: {image_semantic_runner}")
+    for notebook_path in notebook_paths:
+        if not notebook_path.is_file():
+            failures.append(f"Missing native analysis notebook: {notebook_path}")
     if not response_gate_validator.is_file():
         failures.append(f"Missing native response-gate validator: {response_gate_validator}")
     if not smoke_config.is_file():
@@ -193,6 +209,24 @@ def main() -> int:
         else:
             notes.append(f"ioHub is not ready yet (allowed before N3-A): {exc}")
 
+    pytables_status = "OK"
+    try:
+        import tables  # noqa: F401
+    except Exception as exc:
+        pytables_status = f"FAIL: {exc}"
+        if args.require_iohub:
+            failures.append(f"PyTables import preflight failed: {exc}")
+        else:
+            notes.append(f"PyTables is not ready yet: {exc}")
+
+    jupyter_status = "OK"
+    try:
+        import jupyterlab  # noqa: F401
+        import ipykernel  # noqa: F401
+    except Exception as exc:
+        jupyter_status = f"FAIL: {exc}"
+        notes.append(f"Jupyter analysis environment is not ready: {exc}")
+
     cli_path = shutil.which("tobii-pytracker")
     if not cli_path:
         failures.append("tobii-pytracker CLI is not on PATH")
@@ -208,6 +242,8 @@ def main() -> int:
     print(f"distribution_version={dist_version}")
     print(f"psychopy_version={psychopy_version}")
     print(f"setuptools_version={setuptools_version}")
+    print(f"pytables={pytables_status}")
+    print(f"jupyter={jupyter_status}")
     print(f"module_path={module_path}")
     print(f"cli_path={cli_path or '<missing>'}")
     print(f"psychopy_gui={psychopy_gui_status}")

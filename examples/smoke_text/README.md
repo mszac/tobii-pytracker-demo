@@ -1,6 +1,6 @@
 # Native text smoke demo
 
-This older controlled text fixture remains available for regression work. The current reference end-to-end example is `smoke_images`.
+This older controlled text fixture remains available for regression work. The current three-image reference example is `test_demo`.
 
 The demo repository must be nested inside a clean original upstream clone:
 

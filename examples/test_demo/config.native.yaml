@@ -1,0 +1,48 @@
+dataset:
+  image:
+    bbox_model: grid
+    path: examples/test_demo/data
+
+display:
+  monitor:
+    name: image_test_demo_monitor
+    resolution:
+      - 1920
+      - 1080
+    width: 35
+    distance: 60
+    display_number: 0
+  gui:
+    button:
+      size:
+        - 320
+        - 80
+      margin: 20
+      color: grey
+      text:
+        color: white
+        size: 28
+    fixation_dot:
+      size: 10
+      color: white
+    aoe:
+      - 960
+      - 640
+
+output:
+  folder: output/test_demo
+
+instructions:
+  intro:
+    - "TEST DEMO - IMAGE CLASSIFICATION"
+    - "You will see three photographs: HUMAN, ANIMAL and OBJECT."
+    - "For each photograph, use the interactive buttons at the bottom of the screen."
+    - "Choose HUMAN, ANIMAL or OBJECT. Use NONE only when you are not sure."
+    - "The current image stays on screen until you click one response button. There is no response timer."
+    - "For MouseGaze: hold RIGHT mouse button while moving the pointer to generate gaze samples."
+    - "IMPORTANT: release RIGHT before LEFT-clicking an answer button."
+    - "Click the window and press SPACE to begin."
+  outro:
+    - "TEST DEMO is complete."
+    - "All three image responses have been saved."
+    - "Press ESC to exit."

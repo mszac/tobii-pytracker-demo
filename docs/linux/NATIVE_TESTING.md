@@ -1,52 +1,5 @@
-# Linux native testing
+# Linux native testing — Bash
 
-Linux/WSL physical validation is deferred. Bash-only reference layout. Start the reset from the workspace directory and, after cloning, keep the shell in the original `tobii-pytracker` root:
+From the parent `tobii-pytracker` root use the same native launchers as Windows. Install the analysis extras in `pytracker-env`: `pyzmq`, `ujson`, `tables==3.9.1`, `jupyterlab>=4,<5`, `ipykernel>=6,<7`, then the selected upstream-supported PsychoPy version.
 
-```bash
-mkdir -p ~/pytracker-test
-cd ~/pytracker-test
-rm -rf tobii-pytracker
-git clone https://github.com/sbobek/tobii-pytracker.git
-cd tobii-pytracker
-git clone https://github.com/mszac/tobii-pytracker-demo.git
-pwd
-test -f tobii-pytracker-demo/examples/smoke_images/run_native.sh && echo "SMOKE_RUNNER_OK"
-test -f tobii-pytracker-demo/examples/tobii_ux_ab_demo/run_native.sh && echo "UX_AB_RUNNER_OK"
-```
-
-Response-gated invariant: every active launcher runs `tools/validate_response_gated_native.py`; a stimulus has no response timeout and remains visible until an answer button is clicked. Required pre-launch marker: `NATIVE_RESPONSE_GATE_PASS`.
-
-Reference invariants: Python 3.10; install the package only from the current original clone (`pip install .`); never install the demo repo; invoke demo scripts through `tobii-pytracker-demo/...`; launchers may internally switch to the demo root because config/data/output paths are demo-root-relative. Linux/WSL dependency closure remains pending physical validation.
-
-### Time-series variability demo
-
-From the parent `tobii-pytracker` root:
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/tobii_timeseries_noise_demo/run_native.sh
-```
-
-A successful collection prints `NATIVE_TIMESERIES_BLOCK_PASS` for `machine` and `pv`, followed by `NATIVE_TIMESERIES_COLLECTION_COMPLETE`.
-
-
-Analyze the newest machine + PV sessions:
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  python tobii-pytracker-demo/examples/tobii_timeseries_noise_demo/analysis/analyze_results.py
-```
-
-### Native text-search demo
-
-From the parent `tobii-pytracker` root:
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/tobii_text_search_demo/run_native.sh
-
-conda run --no-capture-output -n pytracker-env \
-  python tobii-pytracker-demo/examples/tobii_text_search_demo/analysis/analyze_results.py
-```
-
-Linux/WSL physical execution remains uncertified.
+Run demos with `bash tobii-pytracker-demo/examples/<demo>/run_native.sh`. Open analyses with `jupyter lab tobii-pytracker-demo/examples/<demo>/analysis/<notebook>.ipynb`. Notebook analyses consume only real collected output.

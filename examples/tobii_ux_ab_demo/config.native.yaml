@@ -33,7 +33,7 @@ display:
       - 700
 
 output:
-  folder: output
+  folder: output/tobii_ux_ab_demo
 
 instructions:
   intro:

@@ -20,8 +20,16 @@ python "$DEMO_ROOT/tools/validate_response_gated_native.py" \
   --upstream-root "$UPSTREAM_ROOT"
 
 cd "$DEMO_ROOT"
-exec tobii-pytracker \
+STARTED_AT="$(python -c 'import time; print(time.time())')"
+
+tobii-pytracker \
   --config_file examples/tobii_ux_ab_demo/config.native.yaml \
   --eyetracker_config_file ../configs/mouse_eyetracker_config.yaml \
   --enable_eyetracker \
   --loop_count 12
+
+python examples/tobii_ux_ab_demo/validate_collection.py \
+  --output-root output/tobii_ux_ab_demo \
+  --started-at "$STARTED_AT"
+
+echo "NATIVE_UX_AB_COLLECTION_COMPLETE"
