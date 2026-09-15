@@ -1,4 +1,4 @@
-# Native demo testing — v1.6.0
+# Native demo testing — v1.7.0
 
 All operator commands after cloning are run from the parent `tobii-pytracker` root.
 
@@ -18,20 +18,24 @@ conda run --no-capture-output -n pytracker-env python tobii-pytracker-demo/tools
 
 ```bash
 conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/test_demo/run_native.sh
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/tobii_ux_ab_demo/run_native.sh
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/tobii_timeseries_noise_demo/run_native.sh
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/tobii_text_search_demo/run_native.sh
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/tobii_image_semantic_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/timeseries_noise_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/text_search_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/image_semantic_demo/run_native.sh
 ```
 
 ## Open analyses
 
 ```bash
 conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/test_demo/analysis/test_demo_analysis.ipynb
-conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/tobii_ux_ab_demo/analysis/ux_ab_analysis.ipynb
-conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/tobii_timeseries_noise_demo/analysis/timeseries_analysis.ipynb
-conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/tobii_text_search_demo/analysis/text_search_analysis.ipynb
-conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/tobii_image_semantic_demo/analysis/image_semantic_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/ux_ab_demo/analysis/ux_ab_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/timeseries_noise_demo/analysis/timeseries_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/text_search_demo/analysis/text_search_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/image_semantic_demo/analysis/image_semantic_analysis.ipynb
 ```
 
 Notebook analyses consume real collected `data.csv` only. They never create synthetic replacement data. Missing MouseGaze samples are reported per trial and do not erase valid behavioral responses.
+
+## v1.7.0 naming and language
+
+Example directories no longer use the `tobii_` prefix. The active text demos are English. Preserved Polish variants use `_pl` filenames/runners. Image Semantic Demo exposes only BIOLOGICAL / OBJECT / SCENE and uses balanced mixed presentation rather than category blocks.

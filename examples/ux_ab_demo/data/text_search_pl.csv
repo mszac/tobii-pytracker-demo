@@ -1,0 +1,37 @@
+id,condition,answer,target_phrase,text
+e01,EARLY,tak,7 dni,"PYTANIE: Czy zwrot środków następuje w ciągu tygodnia?
+
+TEKST: Zwrot środków następuje w ciągu 7 dni od zaakceptowania reklamacji. Status sprawy jest widoczny na koncie klienta, a potwierdzenie jest wysyłane e-mailem. Dodatkowe dokumenty można dołączyć z poziomu historii zamówienia."
+l01,LATE,tak,7 dni,"PYTANIE: Czy zwrot środków następuje w ciągu tygodnia?
+
+TEKST: Status sprawy jest widoczny na koncie klienta, a potwierdzenie jest wysyłane e-mailem. Dodatkowe dokumenty można dołączyć z poziomu historii zamówienia. Po zaakceptowaniu reklamacji zwrot środków następuje w ciągu 7 dni."
+e02,EARLY,nie,14 dni,"PYTANIE: Czy zwrot środków następuje w ciągu tygodnia?
+
+TEKST: Zwrot środków następuje w ciągu 14 dni od zaakceptowania reklamacji. Status sprawy jest widoczny na koncie klienta, a potwierdzenie jest wysyłane e-mailem. Dodatkowe dokumenty można dołączyć z poziomu historii zamówienia."
+l02,LATE,nie,14 dni,"PYTANIE: Czy zwrot środków następuje w ciągu tygodnia?
+
+TEKST: Status sprawy jest widoczny na koncie klienta, a potwierdzenie jest wysyłane e-mailem. Dodatkowe dokumenty można dołączyć z poziomu historii zamówienia. Po zaakceptowaniu reklamacji zwrot środków następuje w ciągu 14 dni."
+e03,EARLY,tak,24 godzin,"PYTANIE: Czy odpowiedź konsultanta powinna pojawić się w ciągu jednej doby?
+
+TEKST: Konsultant odpowiada w ciągu 24 godzin od wysłania zgłoszenia. Numer sprawy pojawia się automatycznie po wysłaniu formularza. Załączniki i historię korespondencji można później sprawdzić w panelu pomocy."
+l03,LATE,tak,24 godzin,"PYTANIE: Czy odpowiedź konsultanta powinna pojawić się w ciągu jednej doby?
+
+TEKST: Numer sprawy pojawia się automatycznie po wysłaniu formularza. Załączniki i historię korespondencji można później sprawdzić w panelu pomocy. Od wysłania zgłoszenia konsultant odpowiada w ciągu 24 godzin."
+e04,EARLY,nie,48 godzin,"PYTANIE: Czy odpowiedź konsultanta powinna pojawić się w ciągu jednej doby?
+
+TEKST: Konsultant odpowiada w ciągu 48 godzin od wysłania zgłoszenia. Numer sprawy pojawia się automatycznie po wysłaniu formularza. Załączniki i historię korespondencji można później sprawdzić w panelu pomocy."
+l04,LATE,nie,48 godzin,"PYTANIE: Czy odpowiedź konsultanta powinna pojawić się w ciągu jednej doby?
+
+TEKST: Numer sprawy pojawia się automatycznie po wysłaniu formularza. Załączniki i historię korespondencji można później sprawdzić w panelu pomocy. Od wysłania zgłoszenia konsultant odpowiada w ciągu 48 godzin."
+e05,EARLY,tak,30 dni,"PYTANIE: Czy nieużywany produkt można zwrócić w ciągu około miesiąca?
+
+TEKST: Nieużywany produkt można zwrócić w ciągu 30 dni od dostawy. Formularz zwrotu jest dostępny w szczegółach zamówienia. Produkt powinien być zabezpieczony na czas transportu i zawierać komplet otrzymanych elementów."
+l05,LATE,tak,30 dni,"PYTANIE: Czy nieużywany produkt można zwrócić w ciągu około miesiąca?
+
+TEKST: Formularz zwrotu jest dostępny w szczegółach zamówienia. Produkt powinien być zabezpieczony na czas transportu i zawierać komplet otrzymanych elementów. Od dostawy nieużywany produkt można zwrócić w ciągu 30 dni."
+e06,EARLY,nie,60 dni,"PYTANIE: Czy nieużywany produkt można zwrócić w ciągu około miesiąca?
+
+TEKST: Nieużywany produkt można zwrócić w ciągu 60 dni od dostawy. Formularz zwrotu jest dostępny w szczegółach zamówienia. Produkt powinien być zabezpieczony na czas transportu i zawierać komplet otrzymanych elementów."
+l06,LATE,nie,60 dni,"PYTANIE: Czy nieużywany produkt można zwrócić w ciągu około miesiąca?
+
+TEKST: Formularz zwrotu jest dostępny w szczegółach zamówienia. Produkt powinien być zabezpieczony na czas transportu i zawierać komplet otrzymanych elementów. Od dostawy nieużywany produkt można zwrócić w ciągu 60 dni."

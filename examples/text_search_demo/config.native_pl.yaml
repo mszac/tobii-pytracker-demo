@@ -1,0 +1,49 @@
+dataset:
+  text:
+    path: examples/text_search_demo/data/text_search_pl.csv
+    label_column_name: answer
+    text_column_name: selected_text
+    bbox_model: word
+    font_height: 32
+    wrap_fraction: 0.92
+display:
+  monitor:
+    name: text_search_demo_monitor
+    resolution:
+    - 1920
+    - 1080
+    width: 53
+    distance: 60
+    display_number: 0
+  gui:
+    button:
+      size:
+      - 250
+      - 100
+      margin: 20
+      color: lightgrey
+      text:
+        color: black
+        size: 30
+    fixation_dot:
+      size: 10
+      color: white
+    aoe:
+    - 1200
+    - 700
+output:
+  folder: output/text_search_demo_pl
+instructions:
+  intro:
+  - DEMO WYSZUKIWANIA INFORMACJI
+  - Przeczytaj pytanie oraz krótki tekst informacyjny.
+  - Znajdź informację potrzebną do odpowiedzi i wybierz TAK lub NIE.
+  - Użyj NIE WIEM tylko wtedy, gdy nie możesz zdecydować.
+  - 'Nie ma limitu czasu na odpowiedź: bodziec pozostaje widoczny do kliknięcia odpowiedzi.'
+  - 'MouseGaze: przytrzymaj PRAWY przycisk myszy podczas poruszania wskaźnikiem.'
+  - Puść PRAWY przycisk przed kliknięciem odpowiedzi LEWYM przyciskiem.
+  - Kliknij okno i naciśnij SPACJĘ, aby rozpocząć.
+  outro:
+  - Polska wersja demonstracyjna została zakończona.
+  - Dane zostały zapisane.
+  - Naciśnij ESC, aby zakończyć.

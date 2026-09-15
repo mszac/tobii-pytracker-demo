@@ -1,0 +1,37 @@
+id,condition,answer,target_phrase,text
+e01,EARLY,yes,7 days,"QUESTION: Does the refund arrive within one week?
+
+TEXT: The refund is issued within 7 days after the complaint is approved. The case status is visible in the customer account, and a confirmation is sent by email. Additional documents can be attached from the order history."
+l01,LATE,yes,7 days,"QUESTION: Does the refund arrive within one week?
+
+TEXT: The case status is visible in the customer account, and a confirmation is sent by email. Additional documents can be attached from the order history. After the complaint is approved, the refund is issued within 7 days."
+e02,EARLY,no,14 days,"QUESTION: Does the refund arrive within one week?
+
+TEXT: The refund is issued within 14 days after the complaint is approved. The case status is visible in the customer account, and a confirmation is sent by email. Additional documents can be attached from the order history."
+l02,LATE,no,14 days,"QUESTION: Does the refund arrive within one week?
+
+TEXT: The case status is visible in the customer account, and a confirmation is sent by email. Additional documents can be attached from the order history. After the complaint is approved, the refund is issued within 14 days."
+e03,EARLY,yes,24 hours,"QUESTION: Should a support consultant respond within one day?
+
+TEXT: A support consultant responds within 24 hours after the request is submitted. A case number appears automatically after the form is submitted. Attachments and the conversation history can be viewed later in the help panel."
+l03,LATE,yes,24 hours,"QUESTION: Should a support consultant respond within one day?
+
+TEXT: A case number appears automatically after the form is submitted. Attachments and the conversation history can be viewed later in the help panel. After the request is submitted, a support consultant responds within 24 hours."
+e04,EARLY,no,48 hours,"QUESTION: Should a support consultant respond within one day?
+
+TEXT: A support consultant responds within 48 hours after the request is submitted. A case number appears automatically after the form is submitted. Attachments and the conversation history can be viewed later in the help panel."
+l04,LATE,no,48 hours,"QUESTION: Should a support consultant respond within one day?
+
+TEXT: A case number appears automatically after the form is submitted. Attachments and the conversation history can be viewed later in the help panel. After the request is submitted, a support consultant responds within 48 hours."
+e05,EARLY,yes,30 days,"QUESTION: Can an unused product be returned within about one month?
+
+TEXT: An unused product can be returned within 30 days of delivery. The return form is available in the order details. The product should be secured for transport and include all received components."
+l05,LATE,yes,30 days,"QUESTION: Can an unused product be returned within about one month?
+
+TEXT: The return form is available in the order details. The product should be secured for transport and include all received components. An unused product can be returned within 30 days of delivery."
+e06,EARLY,no,60 days,"QUESTION: Can an unused product be returned within about one month?
+
+TEXT: An unused product can be returned within 60 days of delivery. The return form is available in the order details. The product should be secured for transport and include all received components."
+l06,LATE,no,60 days,"QUESTION: Can an unused product be returned within about one month?
+
+TEXT: The return form is available in the order details. The product should be secured for transport and include all received components. An unused product can be returned within 60 days of delivery."

@@ -1,0 +1,37 @@
+item_id,topic,condition,answer,critical_phrase,question,text_body,text_word_count,selected_text
+1,returns,EARLY,yes,Returns are accepted within thirty days of purchase,Can the product be returned within thirty days?,Returns are accepted within thirty days of purchase. The item must be sent back in its original packaging. The customer pays the return shipping cost.,25,"QUESTION: Can the product be returned within thirty days?
+
+TEXT: Returns are accepted within thirty days of purchase. The item must be sent back in its original packaging. The customer pays the return shipping cost."
+2,delivery,LATE,no,Free delivery is available for orders of at least three hundred zloty,Is free delivery available for orders of two hundred zloty?,Orders are shipped on business days. The customer can choose a courier or parcel locker. Free delivery is available for orders of at least three hundred zloty.,27,"QUESTION: Is free delivery available for orders of two hundred zloty?
+
+TEXT: Orders are shipped on business days. The customer can choose a courier or parcel locker. Free delivery is available for orders of at least three hundred zloty."
+3,complaint,EARLY,no,A complaint can only be submitted by phone,Can a complaint be submitted using the online form?,A complaint can only be submitted by phone. The order number must be provided when the complaint is filed. A response will be provided within fourteen days.,27,"QUESTION: Can a complaint be submitted using the online form?
+
+TEXT: A complaint can only be submitted by phone. The order number must be provided when the complaint is filed. A response will be provided within fourteen days."
+4,account,LATE,yes,The account can be deleted directly in the profile settings,Can the account be deleted directly in the settings?,The email address can be changed after signing in. Order history is available in the profile. The account can be deleted directly in the profile settings.,26,"QUESTION: Can the account be deleted directly in the settings?
+
+TEXT: The email address can be changed after signing in. Order history is available in the profile. The account can be deleted directly in the profile settings."
+5,refund,EARLY,yes,Funds are returned within seven business days,Are funds returned within seven business days?,Funds are returned within seven business days. The refund is sent to the account originally used for payment. The customer receives an email confirmation.,24,"QUESTION: Are funds returned within seven business days?
+
+TEXT: Funds are returned within seven business days. The refund is sent to the account originally used for payment. The customer receives an email confirmation."
+6,booking,LATE,no,Cancelling a booking costs twenty zloty,Can the booking be cancelled without an additional fee?,The date can be changed once. A change requires contacting support in advance. Cancelling a booking costs twenty zloty.,19,"QUESTION: Can the booking be cancelled without an additional fee?
+
+TEXT: The date can be changed once. A change requires contacting support in advance. Cancelling a booking costs twenty zloty."
+7,subscription,EARLY,no,The subscription can only be cancelled after three months,Can the subscription be cancelled at any time?,The subscription can only be cancelled after three months. The fee is charged at the beginning of the month. The plan can be changed in the account settings.,28,"QUESTION: Can the subscription be cancelled at any time?
+
+TEXT: The subscription can only be cancelled after three months. The fee is charged at the beginning of the month. The plan can be changed in the account settings."
+8,warranty,LATE,yes,The warranty is valid for twenty-four months,Is the warranty valid for twenty-four months?,Proof of purchase must be kept for the entire period. A repair can be requested at a service point. The warranty is valid for twenty-four months.,26,"QUESTION: Is the warranty valid for twenty-four months?
+
+TEXT: Proof of purchase must be kept for the entire period. A repair can be requested at a service point. The warranty is valid for twenty-four months."
+9,password,EARLY,yes,The password-reset link is sent by email,Is the password-reset link sent by email?,"The password-reset link is sent by email. The link remains active for thirty minutes. After changing the password, the user must sign in again.",24,"QUESTION: Is the password-reset link sent by email?
+
+TEXT: The password-reset link is sent by email. The link remains active for thirty minutes. After changing the password, the user must sign in again."
+10,invoice,LATE,no,Invoice details cannot be changed after the invoice is issued,Can invoice details be changed after the invoice is issued?,The invoice is available in the customer account. The document can be downloaded as a PDF. Invoice details cannot be changed after the invoice is issued.,26,"QUESTION: Can invoice details be changed after the invoice is issued?
+
+TEXT: The invoice is available in the customer account. The document can be downloaded as a PDF. Invoice details cannot be changed after the invoice is issued."
+11,pickup,EARLY,no,In-person pickup is available only from Monday to Friday,Is in-person pickup also available on weekends?,In-person pickup is available only from Monday to Friday. A prepared order is held for three days. The order number must be provided at pickup.,25,"QUESTION: Is in-person pickup also available on weekends?
+
+TEXT: In-person pickup is available only from Monday to Friday. A prepared order is held for three days. The order number must be provided at pickup."
+12,data,LATE,yes,A copy of the data can be downloaded from the profile settings,Can a copy of your data be downloaded from the profile settings?,The email address can be updated after signing in. Notification preferences are available in the account. A copy of the data can be downloaded from the profile settings.,28,"QUESTION: Can a copy of your data be downloaded from the profile settings?
+
+TEXT: The email address can be updated after signing in. Notification preferences are available in the account. A copy of the data can be downloaded from the profile settings."

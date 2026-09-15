@@ -47,23 +47,33 @@ def main() -> int:
     smoke_data = demo_root / "examples" / "smoke_text" / "data" / "demo_text.csv"
     image_runner = demo_root / "examples" / "test_demo" / "run_native.sh"
     image_validator = demo_root / "examples" / "test_demo" / "validate_collection.py"
-    ux_runner = demo_root / "examples" / "tobii_ux_ab_demo" / "run_native.sh"
-    ux_validator = demo_root / "examples" / "tobii_ux_ab_demo" / "validate_collection.py"
-    timeseries_runner = demo_root / "examples" / "tobii_timeseries_noise_demo" / "run_native.sh"
-    timeseries_validator = demo_root / "examples" / "tobii_timeseries_noise_demo" / "validate_collection.py"
-    timeseries_machine = demo_root / "examples" / "tobii_timeseries_noise_demo" / "data" / "machine_vibration.csv"
-    timeseries_pv = demo_root / "examples" / "tobii_timeseries_noise_demo" / "data" / "pv_power.csv"
-    text_search_runner = demo_root / "examples" / "tobii_text_search_demo" / "run_native.sh"
-    text_search_validator = demo_root / "examples" / "tobii_text_search_demo" / "validate_collection.py"
-    text_search_dataset = demo_root / "examples" / "tobii_text_search_demo" / "data" / "text_search.csv"
+    ux_runner = demo_root / "examples" / "ux_ab_demo" / "run_native.sh"
+    ux_validator = demo_root / "examples" / "ux_ab_demo" / "validate_collection.py"
+    timeseries_runner = demo_root / "examples" / "timeseries_noise_demo" / "run_native.sh"
+    timeseries_validator = demo_root / "examples" / "timeseries_noise_demo" / "validate_collection.py"
+    timeseries_machine = demo_root / "examples" / "timeseries_noise_demo" / "data" / "machine_vibration.csv"
+    timeseries_pv = demo_root / "examples" / "timeseries_noise_demo" / "data" / "pv_power.csv"
+    text_search_runner = demo_root / "examples" / "text_search_demo" / "run_native.sh"
+    text_search_validator = demo_root / "examples" / "text_search_demo" / "validate_collection.py"
+    text_search_dataset = demo_root / "examples" / "text_search_demo" / "data" / "text_search.csv"
     response_gate_validator = demo_root / "tools" / "validate_response_gated_native.py"
-    image_semantic_runner = demo_root / "examples" / "tobii_image_semantic_demo" / "run_native.sh"
+    image_semantic_runner = demo_root / "examples" / "image_semantic_demo" / "run_native.sh"
+    demo_adapter = demo_root / "tools" / "demo_runtime_adapters.py"
+    ux_runtime = demo_root / "examples" / "ux_ab_demo" / "run_experiment.py"
+    text_runtime = demo_root / "examples" / "text_search_demo" / "run_experiment.py"
+    image_semantic_runtime = demo_root / "examples" / "image_semantic_demo" / "run_experiment.py"
+    language_variant_paths = [
+        demo_root / "examples" / "ux_ab_demo" / "data" / "text_search_pl.csv",
+        demo_root / "examples" / "ux_ab_demo" / "config.native_pl.yaml",
+        demo_root / "examples" / "text_search_demo" / "data" / "text_search_pl.csv",
+        demo_root / "examples" / "text_search_demo" / "config.native_pl.yaml",
+    ]
     notebook_paths = [
         demo_root / "examples" / "test_demo" / "analysis" / "test_demo_analysis.ipynb",
-        demo_root / "examples" / "tobii_ux_ab_demo" / "analysis" / "ux_ab_analysis.ipynb",
-        demo_root / "examples" / "tobii_timeseries_noise_demo" / "analysis" / "timeseries_analysis.ipynb",
-        demo_root / "examples" / "tobii_text_search_demo" / "analysis" / "text_search_analysis.ipynb",
-        demo_root / "examples" / "tobii_image_semantic_demo" / "analysis" / "image_semantic_analysis.ipynb",
+        demo_root / "examples" / "ux_ab_demo" / "analysis" / "ux_ab_analysis.ipynb",
+        demo_root / "examples" / "timeseries_noise_demo" / "analysis" / "timeseries_analysis.ipynb",
+        demo_root / "examples" / "text_search_demo" / "analysis" / "text_search_analysis.ipynb",
+        demo_root / "examples" / "image_semantic_demo" / "analysis" / "image_semantic_analysis.ipynb",
     ]
 
     failures: list[str] = []
@@ -103,6 +113,23 @@ def main() -> int:
         failures.append(f"Missing text-search dataset: {text_search_dataset}")
     if not image_semantic_runner.is_file():
         failures.append(f"Missing image-semantic runner: {image_semantic_runner}")
+    if not demo_adapter.is_file():
+        failures.append(f"Missing native demo runtime adapter: {demo_adapter}")
+    for runtime_path in (ux_runtime, text_runtime, image_semantic_runtime):
+        if not runtime_path.is_file():
+            failures.append(f"Missing native demo runtime wrapper: {runtime_path}")
+    for language_path in language_variant_paths:
+        if not language_path.is_file():
+            failures.append(f"Missing preserved Polish language variant: {language_path}")
+    legacy_prefixed = [
+        demo_root / "examples" / "tobii_ux_ab_demo",
+        demo_root / "examples" / "tobii_timeseries_noise_demo",
+        demo_root / "examples" / "tobii_text_search_demo",
+        demo_root / "examples" / "tobii_image_semantic_demo",
+    ]
+    for legacy_path in legacy_prefixed:
+        if legacy_path.exists():
+            failures.append(f"Legacy prefixed example directory must be removed: {legacy_path}")
     for notebook_path in notebook_paths:
         if not notebook_path.is_file():
             failures.append(f"Missing native analysis notebook: {notebook_path}")

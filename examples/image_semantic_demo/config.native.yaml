@@ -1,0 +1,46 @@
+dataset:
+  image:
+    bbox_model: grid
+    path: examples/image_semantic_demo/data
+display:
+  monitor:
+    name: image_semantic_demo_monitor
+    resolution:
+    - 1920
+    - 1080
+    width: 35
+    distance: 60
+    display_number: 0
+  gui:
+    button:
+      size:
+      - 260
+      - 100
+      margin: 20
+      color: lightgrey
+      text:
+        color: black
+        size: 30
+    fixation_dot:
+      size: 10
+      color: white
+    aoe:
+    - 900
+    - 700
+output:
+  folder: output/image_semantic_demo
+instructions:
+  intro:
+  - IMAGE SEMANTIC GAZE DEMO
+  - You will see 12 images from BIOLOGICAL, OBJECT and SCENE categories.
+  - Images are mixed across categories; there are no category blocks.
+  - Look naturally at each image, then click BIOLOGICAL, OBJECT or SCENE.
+  - Only these three response buttons are available in this demo.
+  - 'There is no response timer: the current stimulus remains visible until you click an answer.'
+  - 'For MouseGaze: hold RIGHT mouse button while moving the pointer to generate gaze samples.'
+  - Release RIGHT before LEFT CLICK because LEFT+RIGHT is used as blink by upstream MouseGaze.
+  - Click the window and press SPACE to begin.
+  outro:
+  - The 12-image semantic demo is complete.
+  - The output has been saved.
+  - Press ESC to exit.
