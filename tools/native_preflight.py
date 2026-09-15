@@ -45,19 +45,19 @@ def main() -> int:
         upstream_root = workspace_root / "tobii-pytracker"
     smoke_config = demo_root / "examples" / "smoke_text" / "config.native.yaml"
     smoke_data = demo_root / "examples" / "smoke_text" / "data" / "demo_text.csv"
-    image_runner = demo_root / "examples" / "test_demo" / "run_native.sh"
+    image_runner = demo_root / "examples" / "test_demo" / "run.sh"
     image_validator = demo_root / "examples" / "test_demo" / "validate_collection.py"
-    ux_runner = demo_root / "examples" / "ux_ab_demo" / "run_native.sh"
+    ux_runner = demo_root / "examples" / "ux_ab_demo" / "run.sh"
     ux_validator = demo_root / "examples" / "ux_ab_demo" / "validate_collection.py"
-    timeseries_runner = demo_root / "examples" / "timeseries_noise_demo" / "run_native.sh"
+    timeseries_runner = demo_root / "examples" / "timeseries_noise_demo" / "run.sh"
     timeseries_validator = demo_root / "examples" / "timeseries_noise_demo" / "validate_collection.py"
     timeseries_machine = demo_root / "examples" / "timeseries_noise_demo" / "data" / "machine_vibration.csv"
     timeseries_pv = demo_root / "examples" / "timeseries_noise_demo" / "data" / "pv_power.csv"
-    text_search_runner = demo_root / "examples" / "text_search_demo" / "run_native.sh"
+    text_search_runner = demo_root / "examples" / "text_search_demo" / "run.sh"
     text_search_validator = demo_root / "examples" / "text_search_demo" / "validate_collection.py"
     text_search_dataset = demo_root / "examples" / "text_search_demo" / "data" / "text_search.csv"
     response_gate_validator = demo_root / "tools" / "validate_response_gated_native.py"
-    image_semantic_runner = demo_root / "examples" / "image_semantic_demo" / "run_native.sh"
+    image_semantic_runner = demo_root / "examples" / "image_semantic_demo" / "run.sh"
     demo_adapter = demo_root / "tools" / "demo_runtime_adapters.py"
     ux_runtime = demo_root / "examples" / "ux_ab_demo" / "run_experiment.py"
     text_runtime = demo_root / "examples" / "text_search_demo" / "run_experiment.py"
@@ -67,6 +67,8 @@ def main() -> int:
         demo_root / "examples" / "ux_ab_demo" / "config.native_pl.yaml",
         demo_root / "examples" / "text_search_demo" / "data" / "text_search_pl.csv",
         demo_root / "examples" / "text_search_demo" / "config.native_pl.yaml",
+        demo_root / "examples" / "ux_ab_demo" / "run_pl.sh",
+        demo_root / "examples" / "text_search_demo" / "run_pl.sh",
     ]
     notebook_paths = [
         demo_root / "examples" / "test_demo" / "analysis" / "test_demo_analysis.ipynb",

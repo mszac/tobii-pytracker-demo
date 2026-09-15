@@ -1,6 +1,6 @@
-# Native three-image TEST DEMO
+# Three-image TEST DEMO
 
-Purpose: end-to-end native test of image presentation, interactive response buttons, MouseGaze collection, output creation and notebook analysis.
+Purpose: end-to-end test of image presentation, interactive response buttons, MouseGaze collection, output creation and notebook analysis.
 
 ## Interaction
 
@@ -11,10 +11,10 @@ Each image remains visible without a response timeout until the participant LEFT
 From the parent `tobii-pytracker` root:
 
 ```bash
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/test_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/test_demo/run.sh
 ```
 
-Expected collection markers: `NATIVE_TEST_DEMO_COLLECTION_PASS`, `NATIVE_TEST_DEMO_COLLECTION_COMPLETE`. Output is isolated under `tobii-pytracker-demo/output/test_demo/<session>/data.csv`.
+The collection validator confirms the completed three-trial session. Output is isolated under `tobii-pytracker-demo/output/test_demo/<session>/data.csv`.
 
 ## Analyze in Jupyter
 

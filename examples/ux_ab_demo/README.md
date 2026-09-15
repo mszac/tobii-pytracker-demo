@@ -1,13 +1,13 @@
-# UX A/B Demo
+# UX A/B Text Demo
 
-12-trial native text experiment comparing EARLY versus LATE placement of answer-relevant information.
+12-trial text experiment comparing EARLY versus LATE placement of answer-relevant information.
 
-The active English dataset is `data/text_search.csv`. The preserved Polish version is `data/text_search_pl.csv` with matching `config.native_pl.yaml`.
+The active English dataset is `data/text_search.csv`. The preserved Polish version is `data/text_search_pl.csv`.
 
 Run the English demo from the parent `tobii-pytracker` root:
 
 ```bash
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run.sh
 ```
 
 The visible response buttons are **YES**, **NO**, and **I DON'T KNOW**. The stimulus remains visible until one response is clicked. MouseGaze still uses RIGHT-hold + pointer motion for gaze; release RIGHT before LEFT-clicking a response.
@@ -20,7 +20,7 @@ QUESTION: ...
 TEXT: ...
 ```
 
-The local demo adapter preserves that explicit paragraph break in the native word-bbox geometry while leaving the parent `tobii-pytracker` source unchanged.
+The local demo adapter preserves that explicit paragraph break in the word-bbox geometry while leaving the parent `tobii-pytracker` source unchanged.
 
 Analysis is notebook-only and consumes the newest real collected session:
 
@@ -31,7 +31,7 @@ conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/
 ## Preserved Polish variant
 
 ```bash
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run_native_pl.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run_pl.sh
 ```
 
 The `_pl` runner uses the preserved Polish dataset/config and displays the uncertainty response as **NIE WIEM**.

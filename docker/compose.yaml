@@ -1,0 +1,31 @@
+name: tobii-pytracker-demo
+
+services:
+  demo:
+    image: tobii-pytracker-demo:psychopy
+    build:
+      context: https://github.com/sbobek/tobii-pytracker.git#psychopy
+      dockerfile: Dockerfile
+    environment:
+      DISPLAY: :99
+      PYTHONUNBUFFERED: "1"
+      PYTHONPATH: /app/src
+      QT_QPA_PLATFORM: offscreen
+      HOME: /tmp
+      XDG_CACHE_HOME: /tmp/.cache
+      MPLCONFIGDIR: /tmp/.matplotlib
+      PYTHONDONTWRITEBYTECODE: "1"
+      DEMO: ${DEMO:-test_demo}
+      DEMO_LANG: ${DEMO_LANG:-en}
+      VNC_PORT: ${VNC_PORT:-5900}
+    working_dir: /app/tobii-pytracker-demo
+    volumes:
+      - ..:/app/tobii-pytracker-demo:rw
+    ports:
+      - "127.0.0.1:${VNC_PORT:-5900}:5900"
+    shm_size: "1gb"
+    stdin_open: true
+    tty: true
+    command:
+      - bash
+      - /app/tobii-pytracker-demo/docker/run-demo.sh

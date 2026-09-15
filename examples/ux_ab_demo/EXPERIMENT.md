@@ -1,4 +1,4 @@
-# UX information-placement A/B demo
+# UX A/B Text Demo — information placement
 
 ## Goal
 
@@ -14,7 +14,7 @@ Each of the 12 trials contains a question, a blank separator line, and a short t
 
 ## Language variants
 
-- `data/text_search.csv` + `config.native.yaml`: active English version.
-- `data/text_search_pl.csv` + `config.native_pl.yaml`: preserved Polish version.
+- `data/text_search.csv`: active English stimulus set; the default experiment configuration uses this dataset.
+- `data/text_search_pl.csv`: preserved Polish version.
 
-The active native runner uses a local adapter that displays the upstream `none` response as **I DON'T KNOW** and keeps explicit paragraph breaks aligned with word-bbox geometry. The upstream runtime repository is not modified.
+The active runner uses a local adapter that displays the upstream `none` response as **I DON'T KNOW** and keeps explicit paragraph breaks aligned with word-bbox geometry. The upstream runtime repository is not modified.

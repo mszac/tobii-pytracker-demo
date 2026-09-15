@@ -1,4 +1,4 @@
-# Native text-search demo
+# Text Search Demo
 
 ## Goal
 
@@ -20,12 +20,12 @@ QUESTION: ...
 TEXT: ...
 ```
 
-The local text adapter preserves this blank line in native word-bbox geometry, so AOIs match the displayed paragraph layout.
+The local text adapter preserves this blank line in word-bbox geometry, so AOIs match the displayed paragraph layout.
 
 ## Language variants
 
-- `data/text_search.csv` / `config.native.yaml`: active English version.
-- `data/text_search_pl.csv` / `config.native_pl.yaml`: preserved Polish version using `PYTANIE` and `TEKST` with the same blank-line separation.
+- `data/text_search.csv`: active English stimulus set.
+- `data/text_search_pl.csv`: preserved Polish version using `PYTANIE` and `TEKST` with the same blank-line separation.
 
 In the English runner the upstream `none` class is displayed as **I DON'T KNOW**. It is an uncertainty response, not a target label.
 

@@ -1,11 +1,11 @@
 # Image Semantic Demo
 
-12-image native classification experiment with three balanced categories: **BIOLOGICAL**, **OBJECT**, and **SCENE**.
+12-image classification experiment with three balanced categories: **BIOLOGICAL**, **OBJECT**, and **SCENE**.
 
 Run from the parent `tobii-pytracker` root:
 
 ```bash
-conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/image_semantic_demo/run_native.sh
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/image_semantic_demo/run.sh
 ```
 
 This demo deliberately exposes only three response buttons. The upstream `NONE` class is removed locally for this demo only.

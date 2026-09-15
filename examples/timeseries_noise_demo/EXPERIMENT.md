@@ -2,7 +2,7 @@
 
 ## Design
 
-The demo preserves the scientific logic of the earlier image-based example but uses the native `time_series` modality of `tobii-pytracker` instead of rendered PNG plots.
+The demo preserves the scientific logic of the earlier image-based example but uses the built-in `time_series` modality of `tobii-pytracker` instead of rendered PNG plots.
 
 There are two blocks and 18 total stimuli:
 
@@ -26,7 +26,7 @@ Responses are LOW / MEDIUM / HIGH. The upstream loader also exposes `NONE`, whic
 - **H4:** gaze distribution differs between machine vibration and PV power for the same variability class.
 - **H5:** MEDIUM tends to have the lowest classification accuracy.
 
-## Native time-series implementation
+## Time-series implementation
 
 Each CSV row is one stimulus. The first column is the stimulus ID, the final column is the class, and the 128 numeric values in between are the time-series samples. The runtime uses `dataset.time_series` with `bbox_model: sample`, so `objects_bboxes` contains per-sample time-series regions with sample indices.
 
