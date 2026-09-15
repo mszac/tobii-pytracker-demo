@@ -1,4 +1,4 @@
-# Native Demo – Run Instructions
+# Run Instructions
 
 ## Setup
 
