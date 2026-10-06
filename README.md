@@ -1,100 +1,53 @@
-# Run Instructions
+# Tobii Pytracker Demo
 
-## Setup
+Version: see [`VERSION`](VERSION).
+
+This repository contains five runnable Tobii Pytracker demos, fixed datasets, collection validators, Jupyter analysis notebooks, and the Docker bridge used with [`sbobek/tobii-pytracker`](https://github.com/sbobek/tobii-pytracker).
+
+## Start here
+
+For the complete local and Docker setup, MouseGaze controls, output locations, and Jupyter workflow, read [`README_TESTING.md`](README_TESTING.md).
+
+For local execution, clone this repository **inside** the original upstream checkout and create the documented Python 3.10 environment. Once that environment is installed, verify the repository payload and upstream/package integration:
 
 ```bash
-cd /d/pytracker
-
-rm -rf tobii-pytracker
-git clone https://github.com/sbobek/tobii-pytracker.git
-cd tobii-pytracker
-git clone https://github.com/mszac/tobii-pytracker-demo.git
-
-conda env remove -n pytracker-env -y || true
-conda create -n pytracker-env python=3.10 -y
-
-conda run -n pytracker-env python -m pip install --upgrade pip
-conda run -n pytracker-env python -m pip install .
-conda run -n pytracker-env python -m pip install \
-  'pyzmq>=22.2.1' ujson 'tables==3.9.1' \
-  'jupyterlab>=4,<5' 'ipykernel>=6,<7'
-conda run -n pytracker-env python -m pip install \
-  'psychopy==2024.1.4' --no-deps
+python tobii-pytracker-demo/tools/audit_repository.py
 
 conda run --no-capture-output -n pytracker-env \
-  python tobii-pytracker-demo/tools/native_preflight.py --require-iohub
+  python tobii-pytracker-demo/tools/preflight.py --require-iohub
 ```
 
-## 1. Test Demo
+The repository audit uses PyYAML from the installed pytracker environment. Then run a demo with the unified dispatcher:
 
 ```bash
 conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/test_demo/run_native.sh
+  bash tobii-pytracker-demo/tools/run-demo.sh test_demo
 ```
 
-```bash
-conda run --no-capture-output -n pytracker-env \
-  jupyter lab tobii-pytracker-demo/examples/test_demo/analysis/test_demo_analysis.ipynb
+Available selections:
+
+```text
+test_demo
+ux_ab_demo
+ux_ab_demo pl
+timeseries_noise_demo
+text_search_demo
+text_search_demo pl
+image_semantic_demo
 ```
 
-## 2. UX A/B Demo
+The dispatcher only calls the existing public `examples/*/run.sh` or `run_pl.sh` entrypoints; it does not implement a second experiment path.
 
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/ux_ab_demo/run_native.sh
-```
+## Output
 
-```bash
-conda run --no-capture-output -n pytracker-env \
-  jupyter lab tobii-pytracker-demo/examples/ux_ab_demo/analysis/ux_ab_analysis.ipynb
-```
+Completed sessions are written under `output/`. Generated session data are intentionally ignored by Git; `output/.gitkeep` preserves the directory.
 
-### Polish version
+## Repository boundaries
 
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/ux_ab_demo/run_native_pl.sh
-```
+- The upstream `tobii-pytracker` checkout remains authoritative and should stay clean.
+- Demo-specific adapters live in this repository; upstream source is not patched at runtime.
+- All trials are response-gated: a stimulus remains visible until the participant selects an answer.
+- With upstream MouseGaze, hold **RIGHT** while moving the pointer to generate gaze samples, release RIGHT, then use **LEFT click** to answer.
+- Missing MouseGaze on an otherwise completed trial is a data-quality warning rather than a behavioral-response failure.
 
-## 3. Time Series Noise Demo
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/timeseries_noise_demo/run_native.sh
-```
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  jupyter lab tobii-pytracker-demo/examples/timeseries_noise_demo/analysis/timeseries_analysis.ipynb
-```
-
-## 4. Text Search Demo
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/text_search_demo/run_native.sh
-```
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  jupyter lab tobii-pytracker-demo/examples/text_search_demo/analysis/text_search_analysis.ipynb
-```
-
-### Polish version
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/text_search_demo/run_native_pl.sh
-```
-
-## 5. Image Semantic Demo
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  bash tobii-pytracker-demo/examples/image_semantic_demo/run_native.sh
-```
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  jupyter lab tobii-pytracker-demo/examples/image_semantic_demo/analysis/image_semantic_analysis.ipynb
-```
+Research documentation is under [`docs/basic_examples/`](docs/basic_examples/). RST sources prepared for upstream ReadTheDocs integration are under [`docs/upstream_rst/`](docs/upstream_rst/).

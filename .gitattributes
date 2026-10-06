@@ -1,0 +1,19 @@
+# Keep executable shell entrypoints usable from Windows/Git Bash and Linux.
+*.sh text eol=lf
+
+# Text configuration/documentation files are normalized in the repository.
+*.py text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.rst text eol=lf
+*.csv text eol=lf
+
+# Binary experiment assets must not be line-ending transformed.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+# Jupyter notebooks are JSON text and are normalized to LF.
+*.ipynb text eol=lf

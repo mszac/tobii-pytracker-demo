@@ -1,0 +1,21 @@
+# Collected participant/demo output
+output/*
+!output/.gitkeep
+
+# Python/Jupyter transient files
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# Local environments/editors
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+
+# OS noise
+.DS_Store
+Thumbs.db
