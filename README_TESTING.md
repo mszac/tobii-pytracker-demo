@@ -25,7 +25,6 @@ All experiment trials are response-gated: the current stimulus remains visible u
 Windows 11 + Git Bash reference layout:
 
 ```bash
-cd /d/pytracker
 rm -rf tobii-pytracker
 
 git clone https://github.com/sbobek/tobii-pytracker.git
