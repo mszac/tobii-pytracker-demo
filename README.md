@@ -58,14 +58,6 @@ conda run -n pytracker-env python -m pip install \
   'psychopy==2024.1.4' --no-deps
 ```
 
-Run the compatibility/import check before the first experiment:
-
-```bash
-conda run --no-capture-output -n pytracker-env \
-  python tobii-pytracker-demo/tools/preflight.py --require-iohub
-```
-
-
 ## 3. Run the demos locally
 
 ### Test Demo
