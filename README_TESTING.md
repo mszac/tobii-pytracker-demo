@@ -12,8 +12,6 @@ There is one experiment workflow and one set of demos. You can execute the same 
 - **Text Search Demo** — visual search for answer-relevant phrases in practical-information texts.
 - **Image Semantic Demo** — mixed semantic image categorization across BIOLOGICAL, OBJECT, and SCENE stimuli.
 
-The research-oriented pages prepared for the upstream **Basic Examples** documentation are indexed at [docs/basic_examples/README.md](docs/basic_examples/README.md). The technical Test Demo is intentionally excluded from that documentation set.
-
 All experiment trials are response-gated: the current stimulus remains visible until the participant selects an answer.
 
 ---
@@ -86,7 +84,7 @@ conda run --no-capture-output -n pytracker-env \
   bash tobii-pytracker-demo/examples/ux_ab_demo/run.sh
 ```
 
-Polish preserved variant:
+Polish variant:
 
 ```bash
 conda run --no-capture-output -n pytracker-env \
@@ -109,7 +107,7 @@ conda run --no-capture-output -n pytracker-env \
   bash tobii-pytracker-demo/examples/text_search_demo/run.sh
 ```
 
-Polish preserved variant:
+Polish variant:
 
 ```bash
 conda run --no-capture-output -n pytracker-env \
@@ -207,7 +205,7 @@ English:
 DEMO=ux_ab_demo docker compose -f docker/compose.yaml up --build
 ```
 
-Polish preserved variant:
+Polish variant:
 
 ```bash
 DEMO=ux_ab_demo DEMO_LANG=pl docker compose -f docker/compose.yaml up --build
@@ -227,7 +225,7 @@ English:
 DEMO=text_search_demo docker compose -f docker/compose.yaml up --build
 ```
 
-Polish preserved variant:
+Polish variant:
 
 ```bash
 DEMO=text_search_demo DEMO_LANG=pl docker compose -f docker/compose.yaml up --build
@@ -270,7 +268,173 @@ Jupyter analysis is performed on those host-side sessions with the notebooks lis
 docker compose -f docker/compose.yaml down
 ```
 
-## Platform notes
+---
 
-- [Windows notes](docs/windows/TESTING.md)
-- [Linux notes](docs/linux/TESTING.md)
+# Command reference — Bash vs Windows CMD
+
+This section is an **alternative command reference only**. 
+
+> **Important:** run the commands from the same directories described in the main instructions above.  
+
+
+---
+
+## ═══════════════════════════════════════
+## WINDOWS CMD
+## ═══════════════════════════════════════
+
+These commands are alternatives for **Windows Command Prompt (`cmd.exe`)**. 
+
+### Clone the repositories
+
+```bat
+if exist tobii-pytracker rmdir /s /q tobii-pytracker
+git clone https://github.com/sbobek/tobii-pytracker.git
+cd tobii-pytracker
+git clone https://github.com/mszac/tobii-pytracker-demo.git
+```
+
+### Create the Python environment
+
+```bat
+conda env remove -n pytracker-env -y
+conda create -n pytracker-env python=3.10 -y
+conda run -n pytracker-env python -m pip install --upgrade pip
+conda run -n pytracker-env python -m pip install .
+conda run -n pytracker-env python -m pip install "pyzmq>=22.2.1" ujson "tables==3.9.1" "jupyterlab>=4,<5" "ipykernel>=6,<7"
+conda run -n pytracker-env python -m pip install "psychopy==2024.1.4" --no-deps
+```
+
+### Run demos locally
+
+The local demo launchers are Bash scripts, so the Windows CMD variants below assume **Git for Windows / Git Bash** is installed and `bash.exe` is available on `PATH`.
+
+**Test Demo**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/test_demo/run.sh
+```
+
+**UX A/B Text Demo — English**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run.sh
+```
+
+**UX A/B Text Demo — Polish**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/ux_ab_demo/run_pl.sh
+```
+
+**Time-Series Noise Demo**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/timeseries_noise_demo/run.sh
+```
+
+**Text Search Demo — English**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/text_search_demo/run.sh
+```
+
+**Text Search Demo — Polish**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/text_search_demo/run_pl.sh
+```
+
+**Image Semantic Demo**
+
+```bat
+conda run --no-capture-output -n pytracker-env bash tobii-pytracker-demo/examples/image_semantic_demo/run.sh
+```
+
+### Jupyter analysis
+
+```bat
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/ux_ab_demo/analysis/ux_ab_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/timeseries_noise_demo/analysis/timeseries_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/text_search_demo/analysis/text_search_analysis.ipynb
+conda run --no-capture-output -n pytracker-env jupyter lab tobii-pytracker-demo/examples/image_semantic_demo/analysis/image_semantic_analysis.ipynb
+```
+
+### Verify upstream checkout
+
+```bat
+git status --porcelain
+```
+
+### Docker — clone demo repository
+
+Example for `D:\pytracker`:
+
+```bat
+cd /d D:\pytracker
+if exist tobii-pytracker-demo rmdir /s /q tobii-pytracker-demo
+git clone https://github.com/mszac/tobii-pytracker-demo.git
+cd tobii-pytracker-demo
+```
+
+### Docker — run demos
+
+**Test Demo**
+
+```bat
+set "DEMO=test_demo" && docker compose -f docker/compose.yaml up --build
+```
+
+**UX A/B Text Demo — English**
+
+```bat
+set "DEMO=ux_ab_demo" && docker compose -f docker/compose.yaml up --build
+```
+
+**UX A/B Text Demo — Polish**
+
+```bat
+set "DEMO=ux_ab_demo" && set "DEMO_LANG=pl" && docker compose -f docker/compose.yaml up --build
+```
+
+**Time-Series Noise Demo**
+
+```bat
+set "DEMO=timeseries_noise_demo" && docker compose -f docker/compose.yaml up --build
+```
+
+**Text Search Demo — English**
+
+```bat
+set "DEMO=text_search_demo" && docker compose -f docker/compose.yaml up --build
+```
+
+**Text Search Demo — Polish**
+
+```bat
+set "DEMO=text_search_demo" && set "DEMO_LANG=pl" && docker compose -f docker/compose.yaml up --build
+```
+
+**Image Semantic Demo**
+
+```bat
+set "DEMO=image_semantic_demo" && docker compose -f docker/compose.yaml up --build
+```
+
+### Docker — alternate VNC port
+
+```bat
+set "VNC_PORT=5901" && set "DEMO=image_semantic_demo" && docker compose -f docker/compose.yaml up --build
+```
+
+### Docker — stop
+
+```bat
+docker compose -f docker/compose.yaml down
+```
+
+---
+
+## Notes about Windows shells
+- **PowerShell:** the Bash commands are not PowerShell syntax. If you launch Docker directly from PowerShell, set environment variables with `$env:NAME="value"` before the `docker compose` command. The Windows CMD examples above are specifically for `cmd.exe`.
+
