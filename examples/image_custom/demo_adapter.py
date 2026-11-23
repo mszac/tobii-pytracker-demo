@@ -1,0 +1,1 @@
+from image_custom_dataset import install_image_custom_demo as install
